@@ -258,6 +258,14 @@
         </service>
         <service
             android:process="@string/process"
+            android:name = ".gatt.GattService"
+            android:enabled="@bool/profile_supported_gatt">
+            <intent-filter>
+                <action android:name="android.bluetooth.IBluetoothGatt" />
+            </intent-filter>
+        </service>
+        <service
+            android:process="@string/process"
             android:name = ".hfp.HeadsetService"
             android:enabled="@bool/profile_supported_hs_hfp">
             <intent-filter>
@@ -296,5 +304,24 @@
                 <action android:name="android.bluetooth.IBluetoothPan" />
             </intent-filter>
         </service>
+        <activity android:name=".map.BluetoothMasActivity"
+            android:process="@string/process"
+            android:excludeFromRecents="true"
+            android:theme="@*android:style/Theme.Dialog.Alert">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <service
+            android:process="@string/process"
+            android:name=".map.BluetoothMasService" >
+        </service>
+        <receiver
+            android:process="@string/process"
+            android:name=".map.BluetoothMasReceiver">
+            <intent-filter>
+                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED"/>
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

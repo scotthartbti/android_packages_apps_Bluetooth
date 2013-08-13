@@ -256,6 +256,10 @@ final class HeadsetStateMachine extends StateMachine {
             sVoiceCommandIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         }
 
+        if (sVoiceCommandStopIntent == null) {
+            sVoiceCommandStopIntent = new Intent(ACTION_VOICE_COMMAND_STOP);
+        }
+
         if (context.getPackageManager().resolveActivity(sVoiceCommandIntent,0) != null
             && BluetoothHeadset.isBluetoothVoiceDialingEnabled(context)) {
             mLocalBrsf |= BRSF_AG_VOICE_RECOG;

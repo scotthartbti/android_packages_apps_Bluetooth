@@ -51,7 +51,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 /**
  * Provides Bluetooth Pan Device profile, as a service in
@@ -76,6 +77,8 @@ public class PanService extends ProfileService {
     private static final int MESSAGE_DISCONNECT = 2;
     private static final int MESSAGE_CONNECT_STATE_CHANGED = 11;
     private boolean mTetherOn = false;
+    private static final String PAN_PREFERENCE_FILE = "PANMGR";
+    private static final String PAN_TETHER_SETTING = "TETHERSTATE";
 
     AsyncChannel mTetherAc;
 
